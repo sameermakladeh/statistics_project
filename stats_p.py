@@ -1,6 +1,6 @@
 '''a program to calculate the statistical function for the project'''
 
-import cmath
+import math
 import statistics
 #import turtle
 
@@ -32,7 +32,7 @@ def calc_md(some_list):
         u_kn = calc_uk(some_list,i) #array starts at [0] so i need to give it the right pointer
         upper = u_kn - i*(n_len-i)/2
         bottom = (i*(n_len-i)*(n_len+1))/12
-        md = md + (upper/(cmath.sqrt(bottom)))
+        md = md + (upper/(math.sqrt(bottom)))
     return md
 
 
@@ -46,7 +46,7 @@ def s1_n(some_list):
         for r in range(1,n_len-j+1): #array starts at [0] so i need to give it the right pointer (n-k is included here)
             two = two + j*(n_len-j-r)
     num = ((n_len+1)/12)*(one + 2*two)
-    s1_n = cmath.sqrt(num)
+    s1_n = math.sqrt(num)
     return s1_n
 
 
@@ -56,9 +56,9 @@ def s2_n(some_list):
     for i in range(1,n_len):
         for r in range(1,n_len-i+1): #array starts at [0] so i need to give it the right pointer (n-k is included here)
             sq = (i*(n_len-i-r))/((n_len-i)*(i+r))
-            one = one + cmath.sqrt(sq)
+            one = one + math.sqrt(sq)
     num = (n_len-1) + 2*one
-    s2_n = cmath.sqrt(num)
+    s2_n = math.sqrt(num)
     return s2_n
 
 
@@ -68,10 +68,14 @@ list_s = [18.35,19.54,19.5,19.62,21.52,21.48,20.38,21.15,20.29,19.98,19.71,19.81
 
 mk = calc_mk(list_s)
 s1_n = s1_n(list_s)
+print (mk)
+print(s1_n)
 print(mk/s1_n)
 
 md = calc_md(list_s)
 s2_n = s2_n(list_s)
+print(md)
+print(s2_n)
 print (md/s2_n)
 
 '''mu = statistics.mean(list_s)
