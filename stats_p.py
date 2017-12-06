@@ -1,7 +1,8 @@
 '''a program to calculate the statistical function for the project'''
 
 import math
-import statistics
+#import statistics
+import numpy as np
 #import turtle
 
 def calc_uk(some_list,k):
@@ -14,6 +15,8 @@ def calc_uk(some_list,k):
                 count = count + 1
     return count
 
+x= np.random.uniform(0,1)
+print (x)
 
 def calc_mk(some_list):
     # calculates the number MK using statistic Mann-Whitney for each k in the list
@@ -77,6 +80,7 @@ s2_n = s2_n(list_s)
 print("md stats = ", md)
 print("stdev_2 = ", s2_n)
 print ("ratio_2 = ", md/s2_n)
+
 
 '''mu = statistics.mean(list_s)
 stdv = statistics.stdev(list_s)

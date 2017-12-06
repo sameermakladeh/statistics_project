@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../SA-TSPs/.idea/SA-TSPs.iml" filepath="$PROJECT_DIR$/../SA-TSPs/.idea/SA-TSPs.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/statistics_project.iml" filepath="$PROJECT_DIR$/.idea/statistics_project.iml" />
     </modules>
   </component>
