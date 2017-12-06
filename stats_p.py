@@ -68,15 +68,15 @@ list_s = [18.35,19.54,19.5,19.62,21.52,21.48,20.38,21.15,20.29,19.98,19.71,19.81
 
 mk = calc_mk(list_s)
 s1_n = s1_n(list_s)
-print (mk)
-print(s1_n)
-print(mk/s1_n)
+print ("mk stats = ", mk)
+print("stdev_1 = " ,s1_n)
+print("ratio_1 = " ,mk/s1_n)
 
 md = calc_md(list_s)
 s2_n = s2_n(list_s)
-print(md)
-print(s2_n)
-print (md/s2_n)
+print("md stats = ", md)
+print("stdev_2 = ", s2_n)
+print ("ratio_2 = ", md/s2_n)
 
 '''mu = statistics.mean(list_s)
 stdv = statistics.stdev(list_s)
