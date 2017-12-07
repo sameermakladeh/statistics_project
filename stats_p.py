@@ -78,14 +78,14 @@ def s2_n(some_list):
 def main(j):
     global col_data, col_names
     for i in range(1,j):
-    '''calc for 1 (mk)'''
+#calc for 1 (mk)
         t_list = col_data[:,i]
         mk_call = calc_mk(t_list)
         s1_n_call = s1_n(t_list)
         print("ratio_1 for ",col_names[i], " = ", mk_call/s1_n_call)
         #print("ratio_1 for mk", col_names[i], " = ", mk_call)
         #print("ratio_1 for s1", col_names[i], " = ", s1_n_call)
-    '''calc for 2 (md)'''
+#calc for 2 (md)
         md_call = calc_md(t_list)
         s2_n_call = s2_n(t_list)
         print("ratio_2 for ",col_names[i], " = ", md_call/s2_n_call)
