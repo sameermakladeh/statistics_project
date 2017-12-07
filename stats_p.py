@@ -16,6 +16,9 @@ col_data = df.values
 #FORMAT = ['Year','Mean','Min','Max']
 #df_selected = df[FORMAT]
 
+#save max values for MK and MD
+mk_max = []
+md_max = []
 
 def calc_uk(some_list,k):
     # calculates the statistics Mann-Whitney of the list given using indicator
@@ -30,22 +33,28 @@ def calc_uk(some_list,k):
 
 def calc_mk(some_list):
     # calculates the number MK using statistic Mann-Whitney for each k in the list
+    global mk_max
     n_len = len(some_list)
     mk = 0
+    mk_max = []
     for i in range(1,n_len):
         u_kn = calc_uk(some_list, i) #array starts at [0] so i need to give it the right pointer
         mk = mk + (u_kn-(i*(n_len-i))/2)
+        mk_max.append(u_kn-(i*(n_len-i))/2)
     return mk
 
 
 def calc_md(some_list):
+    global md_max
     n_len = len(some_list)
     md = 0
+    md_max = []
     for i in range(1,n_len):
         u_kn = calc_uk(some_list,i) #array starts at [0] so i need to give it the right pointer
         upper = u_kn - i*(n_len-i)/2
         bottom = (i*(n_len-i)*(n_len+1))/12
         md = md + (upper/(math.sqrt(bottom)))
+        md_max.append(upper/(math.sqrt(bottom)))
     return md
 
 
@@ -77,21 +86,25 @@ def s2_n(some_list):
 
 def main(j):
     global col_data, col_names
+    global md_max, mk_max
     for i in range(1,j):
 #calc for 1 (mk)
         t_list = col_data[:,i]
         mk_call = calc_mk(t_list)
         s1_n_call = s1_n(t_list)
-        print("ratio_1 for ",col_names[i], " = ", mk_call/s1_n_call)
-        #print("ratio_1 for mk", col_names[i], " = ", mk_call)
-        #print("ratio_1 for s1", col_names[i], " = ", s1_n_call)
+        print("\nratio_1 for ",col_names[i], " = ", mk_call/s1_n_call)
+        print("ratio_1 for mk", col_names[i], " = ", mk_call)
+        print("ratio_1 for s1", col_names[i], " = ", s1_n_call)
+        print("ration_1 max value for mk = ", max(mk_max))
+        print("ration_1 max value argument for mk = ", mk_max.index(max(mk_max)))
 #calc for 2 (md)
         md_call = calc_md(t_list)
         s2_n_call = s2_n(t_list)
-        print("ratio_2 for ",col_names[i], " = ", md_call/s2_n_call)
-        #print("ratio_1 for mk", col_names[i], " = ", md_call)
-        #print("ratio_1 for s1", col_names[i], " = ", s2_n_call)
-
+        print("\nratio_2 for ",col_names[i], " = ", md_call/s2_n_call)
+        print("ratio_2 for mk", col_names[i], " = ", md_call)
+        print("ratio_2 for s1", col_names[i], " = ", s2_n_call)
+        print("ration_2 max value for md = ", max(md_max))
+        print("ration_2 max value argument for md = ", md_max.index(max(md_max)))
 
 main(4)
 
